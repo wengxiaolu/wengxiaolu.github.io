@@ -9,7 +9,7 @@
 .admin-wrap button,
 .admin-wrap input,
 .admin-wrap textarea {
-  font-family: "Nunito Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: "Nunito Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", sans-serif;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -33,7 +33,7 @@
 .gate h1, .editor h1 {
   margin: 0 0 0.4em;
   color: #161616;
-  font-family: "League Spartan", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: "League Spartan", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", sans-serif;
   font-size: 2.75rem;
   font-weight: 700;
   letter-spacing: -0.04em;

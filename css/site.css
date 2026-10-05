@@ -6,8 +6,8 @@
   --line: rgba(183, 171, 152, 0.28);
   --link: #f3eadc;
   --link-hover: #fff8ee;
-  --display: "League Spartan", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  --sans: "Nunito Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --display: "League Spartan", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", sans-serif;
+  --sans: "Nunito Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", sans-serif;
   --measure: 760px;
   --header-measure: 980px;
 }

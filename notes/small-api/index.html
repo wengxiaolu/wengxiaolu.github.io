@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小接口 | K_Tech</title>
+  <meta name="description" content="一个只做三件事的内部接口。">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="K_Tech" href="/atom.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;0,6..12,700;1,6..12,500&display=swap">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+  <div class="stage">
+  <header id="header">
+    <div class="container">
+      <a id="brand" href="/">
+        <svg class="mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700" fill="currentColor">K</text>
+        </svg>
+        <strong>K_Tech</strong>
+      </a>
+      <nav id="nav" aria-label="主导航">
+        <a href="/">Home</a>
+        <a href="/notes/" aria-current="page">Notes</a>
+        <a href="/learning/">Learning</a>
+        <a href="/about/">About</a>
+      </nav>
+    </div>
+  </header>
+  <article class="panel">
+    <header class="article-header">
+      <div class="container">
+        <div class="entry-meta"><time datetime="2026-07-03">Jul 3, 2026</time></div>
+        <h1>小接口</h1>
+      </div>
+    </header>
+    <div class="container yue entry-content">
+      <p>上个月给内部工具补了一个接口。需求单上写了八项，真正上线的只有三件：创建、查询、取消。</p>
+<p>剩下的五项都是「以后可能要用」。先不写。字段一旦出现在响应里，调用方就会依赖它。</p>
+<h2>这三件</h2>
+<ul>
+<li>创建：只收标题、日期和负责人。</li>
+<li>查询：按日期倒序，一次最多二十条。</li>
+<li>取消：不删记录，只把状态改成已取消。</li>
+</ul>
+<p>错误也只有两种。参数不对，返回 400，正文写明哪个字段。下游超时，返回 503，不把堆栈塞进响应。</p>
+<p>等真的有人要筛选和导出，再加路由。现在这个文件还不到两百行。</p>
+    </div>
+  </article>
+  <footer id="footer">
+    <div class="container">© 2026 <a href="/about/">K_Tech</a> · <a href="/admin/">后台</a></div>
+  </footer>
+  </div>
+</body>
+</html>

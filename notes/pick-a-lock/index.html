@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>把锁写清 | K_Tech</title>
+  <meta name="description" content="同一段并发代码，先写明你在保护什么。">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/atom+xml" title="K_Tech" href="/atom.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;0,6..12,700;1,6..12,500&display=swap">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+  <div class="stage">
+  <header id="header">
+    <div class="container">
+      <a id="brand" href="/">
+        <svg class="mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700" fill="currentColor">K</text>
+        </svg>
+        <strong>K_Tech</strong>
+      </a>
+      <nav id="nav" aria-label="主导航">
+        <a href="/">Home</a>
+        <a href="/notes/" aria-current="page">Notes</a>
+        <a href="/learning/">Learning</a>
+        <a href="/about/">About</a>
+      </nav>
+    </div>
+  </header>
+  <article class="panel">
+    <header class="article-header">
+      <div class="container">
+        <div class="entry-meta"><time datetime="2026-01-11">Jan 11, 2026</time></div>
+        <h1>把锁写清</h1>
+      </div>
+    </header>
+    <div class="container yue entry-content">
+      <p>复习并发的时候，最容易抄一个锁就觉得安全了。后来改需求，才发现锁住的根本不是那块数据。</p>
+<p>写之前先回答一句：这段代码要让哪一件事不同时发生。</p>
+<h2>对照</h2>
+<ul>
+<li>计数器自己加一，用原子变量就够，不必上互斥锁。</li>
+<li>读多写少的配置，读写锁比一把大锁清楚。</li>
+<li>只是想限制同时跑的任务数，用信号量，不要假装那是一把锁。</li>
+</ul>
+<p>示例还在 <a href="/learning/">tech_learning</a> 里。那是学习代码，用来对照，不是还在线上跑的组件。</p>
+<p>下次再写并发，把「保护的是什么」放在函数上面的注释里。锁的名字可以短，这句话不能省。</p>
+    </div>
+  </article>
+  <footer id="footer">
+    <div class="container">© 2026 <a href="/about/">K_Tech</a> · <a href="/admin/">后台</a></div>
+  </footer>
+  </div>
+</body>
+</html>

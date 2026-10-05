@@ -196,6 +196,8 @@ body.face a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
 }
 
+.line h2 { line-height: 0.92; }
+
 .hero h1 strong { font-weight: 700; }
 
 .chapter { padding: 22vh 0 8vh; }
@@ -207,12 +209,12 @@ body.face a { color: inherit; text-decoration: none; }
 
 .statement {
   margin: 0;
-  max-width: 16em;
+  max-width: 14em;
   font-family: var(--display);
   font-size: 42px;
   font-weight: 700;
   letter-spacing: -0.04em;
-  line-height: 1;
+  line-height: 1.08;
   text-transform: uppercase;
 }
 
@@ -321,7 +323,21 @@ body.face a { color: inherit; text-decoration: none; }
 
 .dock a, .dock p { pointer-events: auto; }
 
-.dock-mark { color: var(--ink); display: block; }
+.dock-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dock-links a {
+  color: var(--ink);
+  font-size: 0.875rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
 
 .dock-side {
   margin: 0;

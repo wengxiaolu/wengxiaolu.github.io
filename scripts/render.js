@@ -299,7 +299,7 @@ function faceHistoryLine(item) {
 }
 
 function linesOf(value) {
-  return (Array.isArray(value) ? value : []).map((line) => escapeHtml(line)).join("<br>");
+  return (Array.isArray(value) ? value : []).map((line) => escapeHtml(line)).join("");
 }
 
 function homeOf(site) {

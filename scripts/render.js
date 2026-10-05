@@ -207,7 +207,7 @@ function sortedNotes(site) {
 function entryList(notes) {
   const items = notes.map((note) => `      <li class="entry-item">
         <div class="entry-meta">
-          <time datetime="${escapeHtml(note.date)}">${escapeHtml(formatDate(note.date))}</time>
+          <time datetime="${escapeHtml(note.date)}">${escapeHtml(formatDateReading(note.date))}</time>
         </div>
         <div class="detail">
           <h2><a href="/notes/${escapeHtml(note.slug)}/">${escapeHtml(note.title)}</a></h2>
@@ -446,7 +446,6 @@ export function renderSite(site) {
       title: "Notes",
       description: `${site.name} 的笔记列表。`,
       current: "notes",
-      band: true,
       main: entryList(notes),
     }),
     "about/index.html": articlePage(site, {
@@ -460,7 +459,6 @@ export function renderSite(site) {
       description: site.learning.description,
       body: site.learning.body,
       current: "learning",
-      band: true,
     }),
     "404.html": pageShell({
       site,

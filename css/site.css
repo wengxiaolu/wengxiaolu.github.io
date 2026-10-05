@@ -468,3 +468,134 @@ img { max-width: 100%; height: auto; }
 
   .page-article #footer { padding: 8px 0 40px; }
 }
+
+@media (min-width: 641px) {
+  #header {
+    padding: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  #header .container,
+  #footer .container,
+  #main.container,
+  .article-header .container,
+  .entry-content.container {
+    max-width: 680px;
+  }
+
+  #header .container { min-height: 64px; }
+
+  #brand strong,
+  #nav a {
+    font-family: var(--sans);
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  #brand strong {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  #nav { gap: 8px 20px; }
+
+  #nav a {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  #nav a:hover,
+  #nav a[aria-current="page"] { color: var(--heading); }
+
+  .panel {
+    max-width: none;
+    margin: 0;
+    padding: 64px 0 72px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    backdrop-filter: none;
+  }
+
+  .article-header { padding: 0; }
+
+  .article-header h1 {
+    margin: 0;
+    font-size: 40px;
+    line-height: 1.28;
+  }
+
+  .page-article .entry-meta {
+    margin: 0 0 14px;
+    font-size: 14px;
+  }
+
+  .dek {
+    max-width: none;
+    margin: 16px 0 0;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .entry-content.container { padding: 36px 20px 0; }
+
+  .yue {
+    font-size: 18px;
+    line-height: 1.85;
+  }
+
+  .yue p { margin: 0 0 1.35em; }
+
+  .yue h2,
+  .yue h3 {
+    border: 0;
+    padding: 0;
+    line-height: 1.4;
+  }
+
+  .yue h2 {
+    margin: 1.9em 0 0.65em;
+    font-size: 22px;
+  }
+
+  .yue h3 {
+    margin: 1.6em 0 0.5em;
+    font-size: 18px;
+  }
+
+  .yue li {
+    margin: 0.4em 0;
+    line-height: 1.75;
+  }
+
+  #main.container { padding-top: 28px; }
+
+  .entry-list { margin-top: 8px; }
+
+  .entry-list .entry-meta {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .entry-list h2 {
+    margin: 6px 0 8px;
+    font-size: 22px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .entry-item { padding: 26px 0 28px; }
+
+  #footer { padding: 0 0 48px; }
+
+  #footer .container {
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+}

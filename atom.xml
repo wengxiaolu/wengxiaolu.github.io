@@ -16,6 +16,34 @@
     <summary>原先这里是 Hexo 的默认主题。现在改成阅读向的个人主页：名字和导航在上，笔记按时间排在下面。</summary>
   </entry>
   <entry>
+    <title>纸上笔记</title>
+    <link href="https://www.wengxiaolu.cn/notes/paper-notes/"/>
+    <id>https://www.wengxiaolu.cn/notes/paper-notes/</id>
+    <updated>2026-09-20T00:00:00Z</updated>
+    <summary>为什么还要留一个自己的站点。</summary>
+  </entry>
+  <entry>
+    <title>小接口</title>
+    <link href="https://www.wengxiaolu.cn/notes/small-api/"/>
+    <id>https://www.wengxiaolu.cn/notes/small-api/</id>
+    <updated>2026-07-03T00:00:00Z</updated>
+    <summary>一个只做三件事的内部接口。</summary>
+  </entry>
+  <entry>
+    <title>周日阅读</title>
+    <link href="https://www.wengxiaolu.cn/notes/sunday-reading/"/>
+    <id>https://www.wengxiaolu.cn/notes/sunday-reading/</id>
+    <updated>2026-04-19T00:00:00Z</updated>
+    <summary>一本讲写作节奏的小书，记三句。</summary>
+  </entry>
+  <entry>
+    <title>把锁写清</title>
+    <link href="https://www.wengxiaolu.cn/notes/pick-a-lock/"/>
+    <id>https://www.wengxiaolu.cn/notes/pick-a-lock/</id>
+    <updated>2026-01-11T00:00:00Z</updated>
+    <summary>同一段并发代码，先写明你在保护什么。</summary>
+  </entry>
+  <entry>
     <title>tech_learning 里有什么</title>
     <link href="https://www.wengxiaolu.cn/notes/tech-learning/"/>
     <id>https://www.wengxiaolu.cn/notes/tech-learning/</id>

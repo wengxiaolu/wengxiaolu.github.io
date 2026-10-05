@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>K_Tech</title>
+  <link href="https://www.wengxiaolu.cn/"/>
+  <link rel="self" href="https://www.wengxiaolu.cn/atom.xml"/>
+  <updated>2026-10-05T00:00:00Z</updated>
+  <id>https://www.wengxiaolu.cn/</id>
+  <author>
+    <name>K_Tech</name>
+  </author>
+  <entry>
+    <title>这个站重新开始</title>
+    <link href="https://www.wengxiaolu.cn/notes/rebuilding-this-site/"/>
+    <id>https://www.wengxiaolu.cn/notes/rebuilding-this-site/</id>
+    <updated>2026-10-05T00:00:00Z</updated>
+    <summary>原先这里是 Hexo 的默认主题。现在改成阅读向的个人主页：名字和导航在上，笔记按时间排在下面。</summary>
+  </entry>
+  <entry>
+    <title>tech_learning 里有什么</title>
+    <link href="https://www.wengxiaolu.cn/notes/tech-learning/"/>
+    <id>https://www.wengxiaolu.cn/notes/tech-learning/</id>
+    <updated>2020-11-25T00:00:00Z</updated>
+    <summary>GitHub 上自己建立的仓库。里面是 Dubbo 调用示例、一份很小的 Netty RPC，以及几段并发锁代码。</summary>
+  </entry>
+</feed>

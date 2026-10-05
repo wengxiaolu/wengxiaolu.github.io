@@ -32,6 +32,8 @@ const { files, deletions } = planCommit(site, ["hello-note", "old-note"]);
 assert.equal(deletions.join(","), "notes/old-note/index.html");
 assert.match(files["index.html"], /标题/);
 assert.match(files["index.html"], /id="field"/);
+assert.match(files["index.html"], /family=League\+Spartan/);
+assert.match(files["index.html"], /Nunito\+Sans/);
 assert.match(files["index.html"], /\/js\/field.js/);
 assert.match(files["about/index.html"], /class="panel"/);
 assert.match(files["notes/hello-note/index.html"], /一行。/);

@@ -37,7 +37,7 @@ if (canvas) {
   }
 
   function paint(time) {
-    ctx.fillStyle = "#07080d";
+    ctx.fillStyle = "#0d0d0d";
     ctx.fillRect(0, 0, width, height);
 
     for (const orb of orbs) {
@@ -106,8 +106,8 @@ if (canvas) {
     }
 
     const shade = ctx.createLinearGradient(0, height * 0.28, 0, height);
-    shade.addColorStop(0, "rgba(7, 8, 13, 0)");
-    shade.addColorStop(1, "rgba(7, 8, 13, 0.88)");
+    shade.addColorStop(0, "rgba(13, 13, 13, 0)");
+    shade.addColorStop(1, "rgba(13, 13, 13, 0.88)");
     ctx.fillStyle = shade;
     ctx.fillRect(0, 0, width, height);
   }

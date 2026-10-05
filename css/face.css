@@ -1,9 +1,10 @@
 :root {
-  --bg: #0d0d0d;
-  --ink: #b7ab98;
-  --ink-dim: hsla(37, 18%, 66%, 0.5);
+  --bg: #f7f4ee;
+  --ink: #161513;
+  --ink-dim: rgba(22, 21, 19, 0.46);
   --red: #eb5939;
-  --dark: #0d0d0d;
+  --dark: #161513;
+  --line: rgba(22, 21, 19, 0.14);
   --display: "League Spartan", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
   --sans: "Nunito Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
   --ease: cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -48,7 +49,7 @@ body.face a { color: inherit; text-decoration: none; }
 .loader-mark {
   width: 16.875rem;
   height: 16.875rem;
-  border: 1px solid hsla(37, 18%, 66%, 0.35);
+  border: 1px solid var(--line);
   border-radius: 50%;
   position: absolute;
 }
@@ -75,7 +76,7 @@ body.face a { color: inherit; text-decoration: none; }
 .loader-start:hover,
 .loader-start:focus-visible {
   background: var(--ink);
-  color: var(--dark);
+  color: var(--bg);
   outline: none;
 }
 
@@ -90,7 +91,6 @@ body.face a { color: inherit; text-decoration: none; }
   margin: -6px 0 0 -6px;
   border-radius: 50%;
   background: var(--ink);
-  mix-blend-mode: difference;
   pointer-events: none;
 }
 
@@ -107,7 +107,6 @@ body.face a { color: inherit; text-decoration: none; }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  mix-blend-mode: difference;
   color: var(--ink);
   pointer-events: none;
 }
@@ -163,7 +162,7 @@ body.face a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: -8%;
   background:
-    radial-gradient(90% 70% at 50% 42%, #2c261f 0%, #141414 46%, #0d0d0d 78%);
+    radial-gradient(90% 70% at 50% 40%, #fffdf8 0%, #f3ece2 52%, #f7f4ee 80%);
   animation: drift 22s var(--ease) infinite alternate;
 }
 
@@ -223,10 +222,10 @@ body.face a { color: inherit; text-decoration: none; }
 
 .line {
   position: relative;
-  border-top: 1px solid hsla(37, 18%, 66%, 0.15);
+  border-top: 1px solid var(--line);
 }
 
-.rows .line:last-child { border-bottom: 1px solid hsla(37, 18%, 66%, 0.15); }
+.rows .line:last-child { border-bottom: 1px solid var(--line); }
 
 .line-base {
   width: min(1120px, calc(100% - 2.5rem));
@@ -318,7 +317,6 @@ body.face a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   align-items: flex-end;
   pointer-events: none;
-  mix-blend-mode: difference;
 }
 
 .dock a, .dock p { pointer-events: auto; }

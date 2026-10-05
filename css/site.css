@@ -321,8 +321,20 @@ img { max-width: 100%; height: auto; }
 #footer a:hover { color: var(--heading); }
 
 @media (max-width: 640px) {
-  #header .container { align-items: flex-start; flex-direction: column; gap: 12px; }
-  #nav { justify-content: flex-start; gap: 8px 14px; }
-  .panel { margin: 16px 12px 40px; border-radius: 20px; }
-  .entry-item { padding: 20px 0 22px; }
+  #header { padding: 16px 0 4px; }
+  #header .container { align-items: center; gap: 12px; }
+  #nav { justify-content: flex-end; gap: 6px 12px; }
+  #nav a,
+  #brand strong { font-size: 12px; letter-spacing: 0.04em; }
+  .category-list a { font-size: 12px; letter-spacing: 0.04em; padding: 0 12px; }
+  .panel {
+    margin: 12px 0 32px;
+    padding: 4px 0 12px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+  .article-header { padding-top: 8px; }
+  .entry-item { padding: 18px 0 20px; }
 }

@@ -40,6 +40,15 @@ assert.doesNotMatch(files["index.html"], /Minh|good shit|Fantasy/i);
 assert.match(files["notes/index.html"], /标题/);
 assert.match(files["about/index.html"], /class="panel"/);
 assert.match(files["notes/hello-note/index.html"], /一行。/);
+assert.match(files["notes/hello-note/index.html"], /class="page-article"/);
+assert.match(files["notes/hello-note/index.html"], /2026年10月5日/);
+assert.match(files["notes/hello-note/index.html"], /class="quiet-link" href="\/notes\/">笔记<\/a>/);
+assert.match(files["notes/hello-note/index.html"], /class="dek"/);
+assert.doesNotMatch(files["about/index.html"], /quiet-link/);
+assert.match(files["notes/hello-note/index.html"], /摘要/);
+assert.match(files["about/index.html"], /class="page-article"/);
+assert.doesNotMatch(files["notes/index.html"], /page-article|quiet-link/);
+assert.doesNotMatch(files["404.html"], /page-article/);
 assert.match(files["atom.xml"], /<summary>摘要<\/summary>/);
 assert.equal(validateSite({ ...site, notes: [{ ...site.notes[0], slug: "Bad Slug" }] }).some((item) => item.includes("地址")), true);
 

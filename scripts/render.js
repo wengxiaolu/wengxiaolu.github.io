@@ -96,6 +96,12 @@ export function formatDate(iso) {
   return `${MONTHS[Number(match[2]) - 1]} ${Number(match[3])}, ${match[1]}`;
 }
 
+function formatDateReading(iso) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+  if (!match) return formatDate(iso);
+  return `${match[1]}年${Number(match[2])}月${Number(match[3])}日`;
+}
+
 export function validateSite(site) {
   const errors = [];
   if (!site || typeof site !== "object") return ["内容格式不对。"];
@@ -124,7 +130,7 @@ export function validateSite(site) {
   return errors;
 }
 
-function pageShell({ site, title, description, current, band, hero, main }) {
+function pageShell({ site, title, description, current, band, hero, main, bodyClass }) {
   const fullTitle = title ? `${title} | ${site.name}` : site.name;
   const nav = NAV.map((item) => {
     const currentAttr = item.key === current ? ` aria-current="page"` : "";
@@ -153,6 +159,10 @@ function pageShell({ site, title, description, current, band, hero, main }) {
     </div>
   </div>`
     : "";
+  const bodyAttr = bodyClass ? ` class="${escapeHtml(bodyClass)}"` : "";
+  const quiet = bodyClass === "page-article" && current === "notes"
+    ? `\n      <a class="quiet-link" href="/notes/">笔记</a>`
+    : "";
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -167,7 +177,7 @@ function pageShell({ site, title, description, current, band, hero, main }) {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;0,6..12,700;1,6..12,500&display=swap">
   <link rel="stylesheet" href="/css/site.css">
 </head>
-<body>
+<body${bodyAttr}>
   <div class="stage">
   <header id="header">
     <div class="container">
@@ -177,7 +187,7 @@ function pageShell({ site, title, description, current, band, hero, main }) {
       </a>
       <nav id="nav" aria-label="主导航">
         ${nav}
-      </nav>
+      </nav>${quiet}
     </div>
   </header>${heroHtml}${bandHtml}
   ${main}
@@ -213,7 +223,10 @@ ${items}
 
 function articlePage(site, { title, description, date, body, current, band }) {
   const meta = date
-    ? `\n        <div class="entry-meta"><time datetime="${escapeHtml(date)}">${escapeHtml(formatDate(date))}</time></div>`
+    ? `\n        <div class="entry-meta"><time datetime="${escapeHtml(date)}">${escapeHtml(formatDateReading(date))}</time></div>`
+    : "";
+  const dek = date && description
+    ? `\n        <p class="dek">${escapeHtml(description)}</p>`
     : "";
   return pageShell({
     site,
@@ -221,10 +234,11 @@ function articlePage(site, { title, description, date, body, current, band }) {
     description,
     current,
     band,
+    bodyClass: "page-article",
     main: `<article class="panel">
     <header class="article-header">
       <div class="container">${meta}
-        <h1>${escapeHtml(title)}</h1>
+        <h1>${escapeHtml(title)}</h1>${dek}
       </div>
     </header>
     <div class="container yue entry-content">

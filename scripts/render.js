@@ -168,7 +168,6 @@ function pageShell({ site, title, description, current, band, hero, main }) {
   <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
-  <canvas id="field" aria-hidden="true"></canvas>
   <div class="stage">
   <header id="header">
     <div class="container">
@@ -186,7 +185,6 @@ function pageShell({ site, title, description, current, band, hero, main }) {
     <div class="container">© ${escapeHtml(site.year || "")} <a href="/about/">${escapeHtml(site.name)}</a> · <a href="/admin/">后台</a></div>
   </footer>
   </div>
-  <script src="/js/field.js"></script>
 </body>
 </html>
 `;
@@ -261,6 +259,154 @@ ${entries}
 `;
 }
 
+const FACE = "loup weng";
+
+function faceMenu(href, label) {
+  return `<a href="${href}">
+        <span class="menu-clip">
+          <span class="menu-line">${label}</span>
+          <span class="menu-line">${label}</span>
+        </span>
+      </a>`;
+}
+
+function faceLine(aside) {
+  const side = aside ? `<p class="aside">${FACE}</p>` : "";
+  const inner = `<div class="line-inner">
+        <h2>${FACE}</h2>
+        ${side}
+      </div>`;
+  return `<div class="line">
+      <div class="line-base">${inner}</div>
+      <div class="line-mask" aria-hidden="true">${inner}</div>
+    </div>`;
+}
+
+function faceHistory() {
+  const inner = `<div class="line-inner history-inner">
+        <p class="year">${FACE}</p>
+        <div>
+          <h3>${FACE}</h3>
+          <p class="aside">${FACE}</p>
+        </div>
+      </div>`;
+  return `<div class="line">
+      <div class="line-base">${inner}</div>
+      <div class="line-mask" aria-hidden="true">${inner}</div>
+    </div>`;
+}
+
+function facePage() {
+  const lines = Array.from({ length: 5 }, () => faceLine(true)).join("\n");
+  const clients = Array.from({ length: 4 }, () => faceLine(true)).join("\n");
+  const history = Array.from({ length: 4 }, () => faceHistory()).join("\n");
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${FACE}</title>
+  <meta name="description" content="${FACE}">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;0,6..12,700;1,6..12,500&display=swap">
+  <link rel="stylesheet" href="/css/face.css">
+</head>
+<body class="face">
+  <div class="loader" id="loader">
+    <div class="loader-mark" aria-hidden="true"></div>
+    <button class="loader-start" id="start" type="button">${FACE}</button>
+  </div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <header class="top">
+    <a class="brand" href="/" aria-label="${FACE}">
+      <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+        <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      </svg>
+    </a>
+    <nav class="menu" aria-label="Sections">
+      ${faceMenu("#about", "About")}
+      ${faceMenu("#work", "Work")}
+      ${faceMenu("#contact", "Contact")}
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="about">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">${FACE}</p>
+        <h1>loup<br><strong>weng</strong><br>loup<br>weng<br>loup</h1>
+      </div>
+    </section>
+    <section class="chapter">
+      <div class="sheet">
+        <p class="eyebrow">${FACE}</p>
+        <p class="statement">${FACE}<br>${FACE}<br>${FACE}</p>
+      </div>
+    </section>
+    <section class="rows" aria-label="${FACE}">
+      <div class="sheet sheet-label"><p class="eyebrow">${FACE}</p></div>
+      ${lines}
+    </section>
+    <section class="chapter" id="work">
+      <div class="sheet">
+        <p class="eyebrow">${FACE}</p>
+        <p class="statement">${FACE}<br>${FACE}</p>
+      </div>
+    </section>
+    <section class="rows rows-history">
+      <div class="sheet sheet-label"><p class="eyebrow">${FACE}</p></div>
+      ${history}
+    </section>
+    <section class="chapter">
+      <div class="sheet">
+        <p class="eyebrow">${FACE}</p>
+        <p class="statement">${FACE}<br>${FACE}</p>
+      </div>
+    </section>
+    <section class="rows">
+      ${clients}
+    </section>
+    <section class="chapter contact" id="contact">
+      <div class="sheet">
+        <p class="eyebrow">${FACE}</p>
+      </div>
+      <div class="line">
+        <a class="line-base line-link" href="https://github.com/wengxiaolu">
+          <div class="line-inner"><h2>${FACE}</h2><p class="aside">${FACE}</p></div>
+        </a>
+        <div class="line-mask" aria-hidden="true">
+          <div class="line-inner"><h2>${FACE}</h2><p class="aside">${FACE}</p></div>
+        </div>
+      </div>
+      <div class="line">
+        <a class="line-base line-link" href="/notes/">
+          <div class="line-inner"><h2>${FACE}</h2><p class="aside">${FACE}</p></div>
+        </a>
+        <div class="line-mask" aria-hidden="true">
+          <div class="line-inner"><h2>${FACE}</h2><p class="aside">${FACE}</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="hero hero-end">
+      <div class="hero-copy">
+        <h1>loup<br><strong>weng</strong><br>loup<br>weng</h1>
+      </div>
+    </section>
+  </main>
+  <footer class="dock">
+    <a class="dock-mark" href="https://github.com/wengxiaolu" aria-label="${FACE}">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </a>
+    <p class="dock-side">${FACE}</p>
+  </footer>
+  <script src="/js/face.js"></script>
+</body>
+</html>
+`;
+}
+
 export function renderSite(site) {
   const errors = validateSite(site);
   if (errors.length) {
@@ -269,17 +415,8 @@ export function renderSite(site) {
     throw error;
   }
   const notes = sortedNotes(site);
-  const featured = notes.filter((note) => note.featured);
   const files = {
-    "index.html": pageShell({
-      site,
-      title: "",
-      description: site.description,
-      current: "home",
-      band: true,
-      hero: true,
-      main: entryList(featured.length ? featured : notes),
-    }).replace(`<title>${escapeHtml(site.name)} | ${escapeHtml(site.name)}</title>`, `<title>${escapeHtml(site.name)}</title>`),
+    "index.html": facePage(),
     "notes/index.html": pageShell({
       site,
       title: "Notes",

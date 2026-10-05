@@ -7,9 +7,9 @@ const NAV = [
   { href: "/about/", label: "About", key: "about" },
 ];
 
-const MARK = `<svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" fill="#111"/>
-          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" fill="#fff">K</text>
+const MARK = `<svg class="mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700" fill="currentColor">K</text>
         </svg>`;
 
 export function escapeHtml(value) {
@@ -124,12 +124,21 @@ export function validateSite(site) {
   return errors;
 }
 
-function pageShell({ site, title, description, current, band, main }) {
+function pageShell({ site, title, description, current, band, hero, main }) {
   const fullTitle = title ? `${title} | ${site.name}` : site.name;
   const nav = NAV.map((item) => {
     const currentAttr = item.key === current ? ` aria-current="page"` : "";
     return `<a href="${item.href}"${currentAttr}>${item.label}</a>`;
   }).join("\n        ");
+  const heroHtml = hero
+    ? `
+  <section class="hero">
+    <div class="container">
+      <h1>${escapeHtml(site.name)}</h1>
+      <p class="lede">${escapeHtml(site.description || "")}</p>
+    </div>
+  </section>`
+    : "";
   const bandHtml = band
     ? `
   <div class="band">
@@ -156,6 +165,8 @@ function pageShell({ site, title, description, current, band, main }) {
   <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="stage">
   <header id="header">
     <div class="container">
       <a id="brand" href="/">
@@ -166,11 +177,13 @@ function pageShell({ site, title, description, current, band, main }) {
         ${nav}
       </nav>
     </div>
-  </header>${bandHtml}
+  </header>${heroHtml}${bandHtml}
   ${main}
   <footer id="footer">
     <div class="container">© ${escapeHtml(site.year || "")} <a href="/about/">${escapeHtml(site.name)}</a> · <a href="/admin/">后台</a></div>
   </footer>
+  </div>
+  <script src="/js/field.js"></script>
 </body>
 </html>
 `;
@@ -207,7 +220,7 @@ function articlePage(site, { title, description, date, body, current, band }) {
     description,
     current,
     band,
-    main: `<article>
+    main: `<article class="panel">
     <header class="article-header">
       <div class="container">${meta}
         <h1>${escapeHtml(title)}</h1>
@@ -261,6 +274,7 @@ export function renderSite(site) {
       description: site.description,
       current: "home",
       band: true,
+      hero: true,
       main: entryList(featured.length ? featured : notes),
     }).replace(`<title>${escapeHtml(site.name)} | ${escapeHtml(site.name)}</title>`, `<title>${escapeHtml(site.name)}</title>`),
     "notes/index.html": pageShell({
@@ -289,7 +303,7 @@ export function renderSite(site) {
       title: "找不到页面",
       description: "这个地址没有内容。",
       current: "",
-      main: `<article>
+      main: `<article class="panel">
     <header class="article-header">
       <div class="container">
         <h1>找不到页面</h1>

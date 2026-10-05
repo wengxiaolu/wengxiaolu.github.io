@@ -10,12 +10,14 @@
   <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="stage">
   <header id="header">
     <div class="container">
       <a id="brand" href="/">
-        <svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" fill="#111"/>
-          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" fill="#fff">K</text>
+        <svg class="mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700" fill="currentColor">K</text>
         </svg>
         <strong>K_Tech</strong>
       </a>
@@ -27,7 +29,7 @@
       </nav>
     </div>
   </header>
-  <article>
+  <article class="panel">
     <header class="article-header">
       <div class="container">
         <h1>找不到页面</h1>
@@ -40,5 +42,7 @@
   <footer id="footer">
     <div class="container">© 2026 <a href="/about/">K_Tech</a> · <a href="/admin/">后台</a></div>
   </footer>
+  </div>
+  <script src="/js/field.js"></script>
 </body>
 </html>

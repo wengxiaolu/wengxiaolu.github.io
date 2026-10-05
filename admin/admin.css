@@ -5,14 +5,20 @@
 }
 
 .gate, .editor, .side {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.94);
+  color: #222;
+  border-radius: 20px;
 }
+
+.gate, .editor { padding: 22px; }
+
+.side { padding: 12px; align-self: start; }
 
 .gate h1, .editor h1 {
   margin: 0 0 0.4em;
   font-size: 1.6em;
   font-weight: 600;
-  color: var(--heading);
+  color: #161616;
 }
 
 .gate p, .hint {

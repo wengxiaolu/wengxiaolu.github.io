@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>后台 | K_Tech</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/site.css">
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <a id="brand" href="/">
+        <svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" fill="#111"/>
+          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" fill="#fff">K</text>
+        </svg>
+        <strong>K_Tech</strong>
+      </a>
+      <nav id="nav" aria-label="后台">
+        <a href="/">查看网站</a>
+        <a href="/admin/" aria-current="page">后台</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-wrap">
+    <section id="gate" class="gate">
+      <h1>连接到 GitHub</h1>
+      <p>笔记用 Markdown 写。保存时，后台把页面生成好并提交到仓库，GitHub Pages 会更新线上站点。</p>
+      <p>令牌只留在这台浏览器里。到 GitHub 的 Settings → Developer settings → Personal access tokens 建一个 fine-grained token，仓库选 <code>wengxiaolu/wengxiaolu.github.io</code>，Contents 设为 Read and write。</p>
+      <form id="token-form">
+        <label>令牌
+          <input id="token" type="password" autocomplete="off" placeholder="github_pat_...">
+        </label>
+        <label>分支
+          <input id="branch" value="master" autocomplete="off">
+        </label>
+        <p class="hint">发布分支是 master。这次改版还没合并时，先不要保存到 master，否则新页面会和旧的 Hexo 文件叠在一起。</p>
+        <div class="row">
+          <button type="submit">保存令牌</button>
+          <button type="button" id="check-token">检查令牌</button>
+          <button type="button" id="forget-token">清除</button>
+        </div>
+      </form>
+      <p id="token-status" class="status" role="status"></p>
+    </section>
+
+    <div class="workspace">
+      <aside class="side">
+        <button type="button" id="new-note">新建笔记</button>
+        <ul id="note-list"></ul>
+        <button type="button" data-screen="about">About</button>
+        <button type="button" data-screen="learning">Learning</button>
+        <button type="button" data-screen="settings">站点</button>
+      </aside>
+      <form id="editor" class="editor">
+        <h1 id="editor-title">笔记</h1>
+        <div id="note-fields">
+          <label>标题
+            <input id="note-title" required>
+          </label>
+          <div class="split">
+            <label>日期
+              <input id="note-date" type="date" required>
+            </label>
+            <label>地址
+              <input id="note-slug" placeholder="my-note" required>
+            </label>
+          </div>
+          <label class="check">
+            <input id="note-featured" type="checkbox">
+            显示在首页
+          </label>
+          <label>摘要
+            <textarea id="note-summary" rows="3" required></textarea>
+          </label>
+        </div>
+        <div id="page-fields" hidden>
+          <label>标题
+            <input id="page-title">
+          </label>
+          <label>简介
+            <input id="page-description">
+          </label>
+        </div>
+        <div id="settings-fields" hidden>
+          <label>名字
+            <input id="site-name">
+          </label>
+          <label>一句话介绍
+            <input id="site-description">
+          </label>
+          <label>域名
+            <input id="site-domain">
+          </label>
+          <label>页脚年份
+            <input id="site-year">
+          </label>
+        </div>
+        <label id="body-label">正文
+          <textarea id="body" rows="14" placeholder="一行一段。&#10;&#10;## 小标题&#10;&#10;- 列表&#10;- [链接文字](https://example.com)&#10;&#10;用 **加粗** 和 `代码`。"></textarea>
+        </label>
+        <p class="hint">一行一段。<code>##</code> 是小标题，<code>- </code> 是列表，链接写成 <code>[文字](网址)</code>。</p>
+        <div class="preview yue" id="preview"></div>
+        <div class="row">
+          <button type="submit" id="save">保存到 GitHub</button>
+          <button type="button" id="delete-note" class="danger">删除这篇</button>
+        </div>
+        <p id="editor-status" class="status" role="status"></p>
+      </form>
+    </div>
+  </main>
+  <script type="module" src="/admin/admin.js"></script>
+</body>
+</html>

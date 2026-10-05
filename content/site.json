@@ -1,0 +1,34 @@
+{
+  "name": "K_Tech",
+  "description": "K_Tech 的个人主页。笔记、学习示例和公开联系方式。",
+  "domain": "https://www.wengxiaolu.cn",
+  "year": "2026",
+  "about": {
+    "title": "About",
+    "description": "K_Tech 的公开介绍、主要作品和联系方式。",
+    "body": "K_Tech。这个站的域名是 wengxiaolu.cn，GitHub 账号是 wengxiaolu。\n\n## 主要作品\n\n- [tech_learning](/learning/)：2020 年的 Java 学习示例。Dubbo 调用、一份 Netty RPC，以及几段并发锁代码。仓库说明是 technology study example。\n\n其余公开仓库是 fork，包括云原生笔记、CS-Notes、Nacos 和 Netty，不列入作品。\n\n## 联系方式\n\n- GitHub：[@wengxiaolu](https://github.com/wengxiaolu)\n- 网站：[wengxiaolu.cn](https://www.wengxiaolu.cn/)\n- 订阅：[Atom](/atom.xml)"
+  },
+  "learning": {
+    "title": "tech_learning",
+    "description": "tech_learning：Dubbo、Netty RPC 和并发锁的 Java 学习示例。",
+    "body": "2020 年放在 GitHub 上的 Java 学习示例。仓库说明一直是 technology study example。\n\n- Dubbo：接口、提供者、消费者，以及异步、泛化调用、负载均衡和集群扩展。\n- Netty RPC：一份很小的客户端和服务器。\n- 并发：`ReentrantLock`、`ReadWriteLock`、`StampedLock`、`Semaphore`。\n\n源码：[github.com/wengxiaolu/tech_learning](https://github.com/wengxiaolu/tech_learning)\n\n更细的目录说明写在笔记 [tech_learning 里有什么](/notes/tech-learning/)。"
+  },
+  "notes": [
+    {
+      "slug": "rebuilding-this-site",
+      "title": "这个站重新开始",
+      "date": "2026-10-05",
+      "summary": "原先这里是 Hexo 的默认主题。现在改成阅读向的个人主页：名字和导航在上，笔记按时间排在下面。",
+      "featured": true,
+      "body": "原先打开这个站，看到的是 Hexo 默认主题：标题是 Hexo，页脚是 John Doe，正文是 Hello World。那个页面不能代表这里。\n\n现在改成阅读向的个人主页。版式参考图拉鼎的 [imtx.me](https://imtx.me/)：顶栏放名字和导航，下面用分类进入笔记和项目，文章按时间排列，点进去是一栏正文。\n\n目前公开的页面是这些：\n\n- [Notes](/notes/)，从这篇文章开始。\n- [Learning](/learning/)，对应 GitHub 上自己建立的 [tech_learning](https://github.com/wengxiaolu/tech_learning)。\n- [About](/about/)，只写公开资料里能核对的部分。\n\nGitHub 上其余仓库是 fork，包括云原生笔记、CS-Notes、Nacos 和 Netty。它们留在仓库列表里当阅读材料，不写进「主要作品」。\n\n新的笔记不用再改 HTML。打开[后台](/admin/)，用 Markdown 写完保存，会提交到 GitHub。"
+    },
+    {
+      "slug": "tech-learning",
+      "title": "tech_learning 里有什么",
+      "date": "2020-11-25",
+      "summary": "GitHub 上自己建立的仓库。里面是 Dubbo 调用示例、一份很小的 Netty RPC，以及几段并发锁代码。",
+      "featured": true,
+      "body": "[tech_learning](https://github.com/wengxiaolu/tech_learning) 建于 2020 年 10 月 30 日，最后一次推送是 2020 年 11 月 25 日。仓库说明是 technology study example。它是 GitHub 账号下自己建立的仓库，不是 fork。\n\n## Demo\n\n一组 Dubbo 示例，分成接口、提供者和消费者。代码覆盖同步调用、异步、泛化调用、mock，以及负载均衡和集群扩展。\n\n## Netty-Rpc\n\n用 Netty 写的一份很小的 RPC。客户端、服务器和 handler 都在 `Netty-Rpc` 目录里。\n\n## concurrent-eg\n\n四段并发锁示例：`ReentrantLock`、`ReadWriteLock`、`StampedLock` 和 `Semaphore`。\n\n这是学习代码，不是还在维护的产品。项目页在 [Learning](/learning/)。"
+    }
+  ]
+}

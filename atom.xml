@@ -13,13 +13,13 @@
     <link href="https://www.wengxiaolu.cn/notes/rebuilding-this-site/"/>
     <id>https://www.wengxiaolu.cn/notes/rebuilding-this-site/</id>
     <updated>2026-10-05T00:00:00Z</updated>
-    <summary>原先这里是 Hexo 的默认主题。现在改成阅读向的个人主页。</summary>
+    <summary>原先这里是 Hexo 的默认主题。现在改成阅读向的个人主页：名字和导航在上，笔记按时间排在下面。</summary>
   </entry>
   <entry>
     <title>tech_learning 里有什么</title>
     <link href="https://www.wengxiaolu.cn/notes/tech-learning/"/>
     <id>https://www.wengxiaolu.cn/notes/tech-learning/</id>
-    <updated>2020-11-25T09:26:44Z</updated>
-    <summary>Dubbo 调用示例、一份很小的 Netty RPC，以及几段并发锁代码。</summary>
+    <updated>2020-11-25T00:00:00Z</updated>
+    <summary>GitHub 上自己建立的仓库。里面是 Dubbo 调用示例、一份很小的 Netty RPC，以及几段并发锁代码。</summary>
   </entry>
 </feed>

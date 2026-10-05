@@ -7,15 +7,19 @@
   <meta name="description" content="K_Tech 的笔记列表。">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/atom+xml" title="K_Tech" href="/atom.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;0,6..12,700;1,6..12,500&display=swap">
   <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
+  <div class="stage">
   <header id="header">
     <div class="container">
       <a id="brand" href="/">
-        <svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" fill="#111"/>
-          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" fill="#fff">K</text>
+        <svg class="mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700" fill="currentColor">K</text>
         </svg>
         <strong>K_Tech</strong>
       </a>
@@ -27,20 +31,11 @@
       </nav>
     </div>
   </header>
-  <div class="band">
-    <div class="container">
-      <nav class="category-list" aria-label="分类">
-        <a href="/">Featured</a>
-        <a href="/notes/" class="active">Notes</a>
-        <a href="/learning/">Learning</a>
-      </nav>
-    </div>
-  </div>
   <main id="main" class="container">
     <ul class="entry-list">
       <li class="entry-item">
         <div class="entry-meta">
-          <time datetime="2026-10-05">Oct 5, 2026</time>
+          <time datetime="2026-10-05">2026年10月5日</time>
         </div>
         <div class="detail">
           <h2><a href="/notes/rebuilding-this-site/">这个站重新开始</a></h2>
@@ -49,7 +44,43 @@
       </li>
       <li class="entry-item">
         <div class="entry-meta">
-          <time datetime="2020-11-25">Nov 25, 2020</time>
+          <time datetime="2026-09-20">2026年9月20日</time>
+        </div>
+        <div class="detail">
+          <h2><a href="/notes/paper-notes/">纸上笔记</a></h2>
+          <div class="description"><a href="/notes/paper-notes/">为什么还要留一个自己的站点。</a></div>
+        </div>
+      </li>
+      <li class="entry-item">
+        <div class="entry-meta">
+          <time datetime="2026-07-03">2026年7月3日</time>
+        </div>
+        <div class="detail">
+          <h2><a href="/notes/small-api/">小接口</a></h2>
+          <div class="description"><a href="/notes/small-api/">一个只做三件事的内部接口。</a></div>
+        </div>
+      </li>
+      <li class="entry-item">
+        <div class="entry-meta">
+          <time datetime="2026-04-19">2026年4月19日</time>
+        </div>
+        <div class="detail">
+          <h2><a href="/notes/sunday-reading/">周日阅读</a></h2>
+          <div class="description"><a href="/notes/sunday-reading/">一本讲写作节奏的小书，记三句。</a></div>
+        </div>
+      </li>
+      <li class="entry-item">
+        <div class="entry-meta">
+          <time datetime="2026-01-11">2026年1月11日</time>
+        </div>
+        <div class="detail">
+          <h2><a href="/notes/pick-a-lock/">把锁写清</a></h2>
+          <div class="description"><a href="/notes/pick-a-lock/">同一段并发代码，先写明你在保护什么。</a></div>
+        </div>
+      </li>
+      <li class="entry-item">
+        <div class="entry-meta">
+          <time datetime="2020-11-25">2020年11月25日</time>
         </div>
         <div class="detail">
           <h2><a href="/notes/tech-learning/">tech_learning 里有什么</a></h2>
@@ -61,5 +92,6 @@
   <footer id="footer">
     <div class="container">© 2026 <a href="/about/">K_Tech</a> · <a href="/admin/">后台</a></div>
   </footer>
+  </div>
 </body>
 </html>

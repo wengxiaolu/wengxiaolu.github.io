@@ -7,9 +7,9 @@ const NAV = [
   { href: "/about/", label: "About", key: "about" },
 ];
 
-const MARK = `<svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" fill="#111"/>
-          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="700" fill="#fff">K</text>
+const MARK = `<svg class="mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="12" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" font-weight="700" fill="currentColor">K</text>
         </svg>`;
 
 export function escapeHtml(value) {
@@ -96,6 +96,12 @@ export function formatDate(iso) {
   return `${MONTHS[Number(match[2]) - 1]} ${Number(match[3])}, ${match[1]}`;
 }
 
+function formatDateReading(iso) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+  if (!match) return formatDate(iso);
+  return `${match[1]}年${Number(match[2])}月${Number(match[3])}日`;
+}
+
 export function validateSite(site) {
   const errors = [];
   if (!site || typeof site !== "object") return ["内容格式不对。"];
@@ -124,12 +130,21 @@ export function validateSite(site) {
   return errors;
 }
 
-function pageShell({ site, title, description, current, band, main }) {
+function pageShell({ site, title, description, current, band, hero, main, bodyClass }) {
   const fullTitle = title ? `${title} | ${site.name}` : site.name;
   const nav = NAV.map((item) => {
     const currentAttr = item.key === current ? ` aria-current="page"` : "";
     return `<a href="${item.href}"${currentAttr}>${item.label}</a>`;
   }).join("\n        ");
+  const heroHtml = hero
+    ? `
+  <section class="hero">
+    <div class="container">
+      <h1>${escapeHtml(site.name)}</h1>
+      <p class="lede">${escapeHtml(site.description || "")}</p>
+    </div>
+  </section>`
+    : "";
   const bandHtml = band
     ? `
   <div class="band">
@@ -144,6 +159,10 @@ function pageShell({ site, title, description, current, band, main }) {
     </div>
   </div>`
     : "";
+  const bodyAttr = bodyClass ? ` class="${escapeHtml(bodyClass)}"` : "";
+  const quiet = bodyClass === "page-article" && current === "notes"
+    ? `\n      <a class="quiet-link" href="/notes/">笔记</a>`
+    : "";
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -153,9 +172,13 @@ function pageShell({ site, title, description, current, band, main }) {
   <meta name="description" content="${escapeHtml(description || site.description || "")}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/atom+xml" title="${escapeHtml(site.name)}" href="/atom.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;0,6..12,700;1,6..12,500&display=swap">
   <link rel="stylesheet" href="/css/site.css">
 </head>
-<body>
+<body${bodyAttr}>
+  <div class="stage">
   <header id="header">
     <div class="container">
       <a id="brand" href="/">
@@ -164,13 +187,14 @@ function pageShell({ site, title, description, current, band, main }) {
       </a>
       <nav id="nav" aria-label="主导航">
         ${nav}
-      </nav>
+      </nav>${quiet}
     </div>
-  </header>${bandHtml}
+  </header>${heroHtml}${bandHtml}
   ${main}
   <footer id="footer">
     <div class="container">© ${escapeHtml(site.year || "")} <a href="/about/">${escapeHtml(site.name)}</a> · <a href="/admin/">后台</a></div>
   </footer>
+  </div>
 </body>
 </html>
 `;
@@ -183,7 +207,7 @@ function sortedNotes(site) {
 function entryList(notes) {
   const items = notes.map((note) => `      <li class="entry-item">
         <div class="entry-meta">
-          <time datetime="${escapeHtml(note.date)}">${escapeHtml(formatDate(note.date))}</time>
+          <time datetime="${escapeHtml(note.date)}">${escapeHtml(formatDateReading(note.date))}</time>
         </div>
         <div class="detail">
           <h2><a href="/notes/${escapeHtml(note.slug)}/">${escapeHtml(note.title)}</a></h2>
@@ -199,7 +223,10 @@ ${items}
 
 function articlePage(site, { title, description, date, body, current, band }) {
   const meta = date
-    ? `\n        <div class="entry-meta"><time datetime="${escapeHtml(date)}">${escapeHtml(formatDate(date))}</time></div>`
+    ? `\n        <div class="entry-meta"><time datetime="${escapeHtml(date)}">${escapeHtml(formatDateReading(date))}</time></div>`
+    : "";
+  const dek = date && description
+    ? `\n        <p class="dek">${escapeHtml(description)}</p>`
     : "";
   return pageShell({
     site,
@@ -207,10 +234,11 @@ function articlePage(site, { title, description, date, body, current, band }) {
     description,
     current,
     band,
-    main: `<article>
+    bodyClass: "page-article",
+    main: `<article class="panel">
     <header class="article-header">
       <div class="container">${meta}
-        <h1>${escapeHtml(title)}</h1>
+        <h1>${escapeHtml(title)}</h1>${dek}
       </div>
     </header>
     <div class="container yue entry-content">
@@ -245,6 +273,164 @@ ${entries}
 `;
 }
 
+function faceMenu(href, label) {
+  return `<a href="${href}">
+        <span class="menu-clip">
+          <span class="menu-line">${escapeHtml(label)}</span>
+          <span class="menu-line">${escapeHtml(label)}</span>
+        </span>
+      </a>`;
+}
+
+function facePair(title, aside) {
+  const side = aside ? `<p class="aside">${escapeHtml(aside)}</p>` : "";
+  return `<div class="line-inner">
+        <h2>${escapeHtml(title)}</h2>
+        ${side}
+      </div>`;
+}
+
+function faceBlock(inner, href) {
+  const safe = href ? safeUrl(href) : null;
+  const base = safe
+    ? `<a class="line-base line-link" href="${escapeHtml(safe)}">${inner}</a>`
+    : `<div class="line-base">${inner}</div>`;
+  return `<div class="line">
+      ${base}
+      <div class="line-mask" aria-hidden="true">${inner}</div>
+    </div>`;
+}
+
+function faceHistoryLine(item) {
+  const inner = `<div class="line-inner history-inner">
+        <p class="year">${escapeHtml(item.year || "")}</p>
+        <div>
+          <h3>${escapeHtml(item.title || "")}</h3>
+          <p class="aside">${escapeHtml(item.place || "")}</p>
+        </div>
+      </div>`;
+  return faceBlock(inner);
+}
+
+function linesOf(value) {
+  return (Array.isArray(value) ? value : []).map((line) => escapeHtml(line)).join("");
+}
+
+function homeOf(site) {
+  const home = site.home && typeof site.home === "object" ? site.home : {};
+  return {
+    name: home.name || site.name || "Loup Weng",
+    hero: Array.isArray(home.hero) && home.hero.length ? home.hero : ["Loup", "Weng"],
+    enter: home.enter || "Enter",
+    introLabel: home.introLabel || "About",
+    intro: Array.isArray(home.intro) ? home.intro : [],
+    notesLabel: home.notesLabel || "Notes",
+    workLabel: home.workLabel || "Work",
+    work: Array.isArray(home.work) ? home.work : [],
+    historyLabel: home.historyLabel || "History",
+    history: Array.isArray(home.history) ? home.history : [],
+    contactLabel: home.contactLabel || "Contact",
+    socials: Array.isArray(home.socials) ? home.socials : [],
+    close: Array.isArray(home.close) && home.close.length ? home.close : ["Loup", "Weng"],
+  };
+}
+
+function facePage(site, notes) {
+  const home = homeOf(site);
+  const hero = home.hero.map((line, index) => (index === 1 ? `<strong>${escapeHtml(line)}</strong>` : escapeHtml(line))).join("<br>");
+  const close = home.close.map((line, index) => (index === 1 ? `<strong>${escapeHtml(line)}</strong>` : escapeHtml(line))).join("<br>");
+  const featured = notes.filter((note) => note.featured);
+  const articleNotes = featured.length ? featured : notes;
+  const articles = articleNotes.map((note) => faceBlock(facePair(note.title, note.summary), `/notes/${note.slug}/`)).join("\n");
+  const history = home.history.map((item) => faceHistoryLine(item)).join("\n");
+  const socials = home.socials.map((item) => faceBlock(facePair(item.label, item.aside), item.href)).join("\n");
+  const dock = home.socials.map((item) => {
+    const href = safeUrl(item.href || "") || "#";
+    return `<li><a href="${escapeHtml(href)}">${escapeHtml(item.label || "")}</a></li>`;
+  }).join("\n");
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtml(home.name)}</title>
+  <meta name="description" content="${escapeHtml(home.intro[0] || site.description || home.name)}">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;0,6..12,700;1,6..12,500&display=swap">
+  <link rel="stylesheet" href="/css/face.css">
+</head>
+<body class="face">
+  <div class="loader" id="loader">
+    <div class="loader-mark" aria-hidden="true"></div>
+    <button class="loader-start" id="start" type="button">${escapeHtml(home.enter)}</button>
+  </div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <header class="top">
+    <a class="brand" href="/" aria-label="${escapeHtml(home.name)}">
+      <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+        <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      </svg>
+    </a>
+    <nav class="menu" aria-label="Sections">
+      ${faceMenu("#about", "About")}
+      ${faceMenu("#work", "Work")}
+      ${faceMenu("#contact", "Contact")}
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="about">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">${escapeHtml(home.name)}</p>
+        <h1>${hero}</h1>
+      </div>
+    </section>
+    <section class="chapter">
+      <div class="sheet">
+        <p class="eyebrow">${escapeHtml(home.introLabel)}</p>
+        <p class="statement">${linesOf(home.intro)}</p>
+      </div>
+    </section>
+    <section class="rows" aria-label="${escapeHtml(home.notesLabel)}">
+      <div class="sheet sheet-label"><p class="eyebrow">${escapeHtml(home.notesLabel)}</p></div>
+      ${articles}
+    </section>
+    <section class="chapter" id="work">
+      <div class="sheet">
+        <p class="eyebrow">${escapeHtml(home.workLabel)}</p>
+        <p class="statement">${linesOf(home.work)}</p>
+      </div>
+    </section>
+    <section class="rows rows-history">
+      <div class="sheet sheet-label"><p class="eyebrow">${escapeHtml(home.historyLabel)}</p></div>
+      ${history}
+    </section>
+    <section class="chapter" id="contact">
+      <div class="sheet">
+        <p class="eyebrow">${escapeHtml(home.contactLabel)}</p>
+      </div>
+      ${socials}
+    </section>
+    <section class="hero hero-end">
+      <div class="hero-copy">
+        <h1>${close}</h1>
+      </div>
+    </section>
+  </main>
+  <footer class="dock">
+    <ul class="dock-links">
+      ${dock}
+    </ul>
+    <p class="dock-side">${escapeHtml(home.name)}</p>
+  </footer>
+  <script src="/js/face.js"></script>
+</body>
+</html>
+`;
+}
+
 export function renderSite(site) {
   const errors = validateSite(site);
   if (errors.length) {
@@ -253,22 +439,13 @@ export function renderSite(site) {
     throw error;
   }
   const notes = sortedNotes(site);
-  const featured = notes.filter((note) => note.featured);
   const files = {
-    "index.html": pageShell({
-      site,
-      title: "",
-      description: site.description,
-      current: "home",
-      band: true,
-      main: entryList(featured.length ? featured : notes),
-    }).replace(`<title>${escapeHtml(site.name)} | ${escapeHtml(site.name)}</title>`, `<title>${escapeHtml(site.name)}</title>`),
+    "index.html": facePage(site, notes),
     "notes/index.html": pageShell({
       site,
       title: "Notes",
       description: `${site.name} 的笔记列表。`,
       current: "notes",
-      band: true,
       main: entryList(notes),
     }),
     "about/index.html": articlePage(site, {
@@ -282,14 +459,13 @@ export function renderSite(site) {
       description: site.learning.description,
       body: site.learning.body,
       current: "learning",
-      band: true,
     }),
     "404.html": pageShell({
       site,
       title: "找不到页面",
       description: "这个地址没有内容。",
       current: "",
-      main: `<article>
+      main: `<article class="panel">
     <header class="article-header">
       <div class="container">
         <h1>找不到页面</h1>

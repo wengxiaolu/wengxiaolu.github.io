@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About | K_Tech</title>
-  <meta name="description" content="K_Tech 的公开介绍、主要作品和联系方式。">
+  <title>把锁写清 | K_Tech</title>
+  <meta name="description" content="同一段并发代码，先写明你在保护什么。">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/atom+xml" title="K_Tech" href="/atom.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,31 +25,32 @@
       </a>
       <nav id="nav" aria-label="主导航">
         <a href="/">Home</a>
-        <a href="/notes/">Notes</a>
+        <a href="/notes/" aria-current="page">Notes</a>
         <a href="/learning/">Learning</a>
-        <a href="/about/" aria-current="page">About</a>
+        <a href="/about/">About</a>
       </nav>
+      <a class="quiet-link" href="/notes/">笔记</a>
     </div>
   </header>
   <article class="panel">
     <header class="article-header">
       <div class="container">
-        <h1>About</h1>
+        <div class="entry-meta"><time datetime="2026-01-11">2026年1月11日</time></div>
+        <h1>把锁写清</h1>
+        <p class="dek">同一段并发代码，先写明你在保护什么。</p>
       </div>
     </header>
     <div class="container yue entry-content">
-      <p>K_Tech。这个站的域名是 wengxiaolu.cn，GitHub 账号是 wengxiaolu。</p>
-<h2>主要作品</h2>
+      <p>复习并发的时候，最容易抄一个锁就觉得安全了。后来改需求，才发现锁住的根本不是那块数据。</p>
+<p>写之前先回答一句：这段代码要让哪一件事不同时发生。</p>
+<h2>对照</h2>
 <ul>
-<li><a href="/learning/">tech_learning</a>：2020 年的 Java 学习示例。Dubbo 调用、一份 Netty RPC，以及几段并发锁代码。仓库说明是 technology study example。</li>
+<li>计数器自己加一，用原子变量就够，不必上互斥锁。</li>
+<li>读多写少的配置，读写锁比一把大锁清楚。</li>
+<li>只是想限制同时跑的任务数，用信号量，不要假装那是一把锁。</li>
 </ul>
-<p>其余公开仓库是 fork，包括云原生笔记、CS-Notes、Nacos 和 Netty，不列入作品。</p>
-<h2>联系方式</h2>
-<ul>
-<li>GitHub：<a href="https://github.com/wengxiaolu">@wengxiaolu</a></li>
-<li>网站：<a href="https://www.wengxiaolu.cn/">wengxiaolu.cn</a></li>
-<li>订阅：<a href="/atom.xml">Atom</a></li>
-</ul>
+<p>示例还在 <a href="/learning/">tech_learning</a> 里。那是学习代码，用来对照，不是还在线上跑的组件。</p>
+<p>下次再写并发，把「保护的是什么」放在函数上面的注释里。锁的名字可以短，这句话不能省。</p>
     </div>
   </article>
   <footer id="footer">

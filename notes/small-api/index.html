@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About | K_Tech</title>
-  <meta name="description" content="K_Tech 的公开介绍、主要作品和联系方式。">
+  <title>小接口 | K_Tech</title>
+  <meta name="description" content="一个只做三件事的内部接口。">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="alternate" type="application/atom+xml" title="K_Tech" href="/atom.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,31 +25,32 @@
       </a>
       <nav id="nav" aria-label="主导航">
         <a href="/">Home</a>
-        <a href="/notes/">Notes</a>
+        <a href="/notes/" aria-current="page">Notes</a>
         <a href="/learning/">Learning</a>
-        <a href="/about/" aria-current="page">About</a>
+        <a href="/about/">About</a>
       </nav>
+      <a class="quiet-link" href="/notes/">笔记</a>
     </div>
   </header>
   <article class="panel">
     <header class="article-header">
       <div class="container">
-        <h1>About</h1>
+        <div class="entry-meta"><time datetime="2026-07-03">2026年7月3日</time></div>
+        <h1>小接口</h1>
+        <p class="dek">一个只做三件事的内部接口。</p>
       </div>
     </header>
     <div class="container yue entry-content">
-      <p>K_Tech。这个站的域名是 wengxiaolu.cn，GitHub 账号是 wengxiaolu。</p>
-<h2>主要作品</h2>
+      <p>上个月给内部工具补了一个接口。需求单上写了八项，真正上线的只有三件：创建、查询、取消。</p>
+<p>剩下的五项都是「以后可能要用」。先不写。字段一旦出现在响应里，调用方就会依赖它。</p>
+<h2>这三件</h2>
 <ul>
-<li><a href="/learning/">tech_learning</a>：2020 年的 Java 学习示例。Dubbo 调用、一份 Netty RPC，以及几段并发锁代码。仓库说明是 technology study example。</li>
+<li>创建：只收标题、日期和负责人。</li>
+<li>查询：按日期倒序，一次最多二十条。</li>
+<li>取消：不删记录，只把状态改成已取消。</li>
 </ul>
-<p>其余公开仓库是 fork，包括云原生笔记、CS-Notes、Nacos 和 Netty，不列入作品。</p>
-<h2>联系方式</h2>
-<ul>
-<li>GitHub：<a href="https://github.com/wengxiaolu">@wengxiaolu</a></li>
-<li>网站：<a href="https://www.wengxiaolu.cn/">wengxiaolu.cn</a></li>
-<li>订阅：<a href="/atom.xml">Atom</a></li>
-</ul>
+<p>错误也只有两种。参数不对，返回 400，正文写明哪个字段。下游超时，返回 503，不把堆栈塞进响应。</p>
+<p>等真的有人要筛选和导出，再加路由。现在这个文件还不到两百行。</p>
     </div>
   </article>
   <footer id="footer">

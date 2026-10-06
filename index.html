@@ -10,6 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;0,6..12,700;1,6..12,500&display=swap">
   <link rel="stylesheet" href="/css/face.css">
+  <script>
+    try {
+      if (location.hash || sessionStorage.getItem("entered")) document.documentElement.classList.add("skip-loader");
+    } catch (error) {}
+  </script>
 </head>
 <body class="face">
   <div class="loader" id="loader">
@@ -22,11 +27,11 @@
         <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.4"/>
       </svg>
     </a>
-    <nav class="menu" aria-label="Sections">
-      <a href="#about">
+    <nav class="menu" aria-label="主导航">
+      <a href="/index.html">
         <span class="menu-clip">
-          <span class="menu-line">About</span>
-          <span class="menu-line">About</span>
+          <span class="menu-line">Home</span>
+          <span class="menu-line">Home</span>
         </span>
       </a>
       <a href="/notes/">
@@ -35,13 +40,25 @@
           <span class="menu-line">Notes</span>
         </span>
       </a>
-      <a href="#work">
+      <a href="/learning/">
+        <span class="menu-clip">
+          <span class="menu-line">Learning</span>
+          <span class="menu-line">Learning</span>
+        </span>
+      </a>
+      <a href="/about/">
+        <span class="menu-clip">
+          <span class="menu-line">About</span>
+          <span class="menu-line">About</span>
+        </span>
+      </a>
+      <a href="/index.html#work">
         <span class="menu-clip">
           <span class="menu-line">Work</span>
           <span class="menu-line">Work</span>
         </span>
       </a>
-      <a href="#contact">
+      <a href="/index.html#contact">
         <span class="menu-clip">
           <span class="menu-line">Contact</span>
           <span class="menu-line">Contact</span>

@@ -1,7 +1,7 @@
 {
   "name": "K_Tech",
   "description": "K_Tech 的个人主页。笔记、学习示例和公开联系方式。",
-  "domain": "https://www.wengxiaolu.cn",
+  "domain": "https://wengxiaolu.github.io",
   "year": "2026",
   "home": {
     "name": "Loup Weng",
@@ -36,7 +36,7 @@
   "about": {
     "title": "About",
     "description": "K_Tech 的公开介绍、主要作品和联系方式。",
-    "body": "K_Tech。这个站的域名是 wengxiaolu.cn，GitHub 账号是 wengxiaolu。\n\n## 主要作品\n\n- [tech_learning](/learning/)：2020 年的 Java 学习示例。Dubbo 调用、一份 Netty RPC，以及几段并发锁代码。仓库说明是 technology study example。\n\n其余公开仓库是 fork，包括云原生笔记、CS-Notes、Nacos 和 Netty，不列入作品。\n\n## 联系方式\n\n- GitHub：[@wengxiaolu](https://github.com/wengxiaolu)\n- 网站：[wengxiaolu.cn](https://www.wengxiaolu.cn/)\n- 订阅：[Atom](/atom.xml)"
+    "body": "K_Tech。这个站发布在 wengxiaolu.github.io，GitHub 账号是 wengxiaolu。\n\n## 主要作品\n\n- [tech_learning](/learning/)：2020 年的 Java 学习示例。Dubbo 调用、一份 Netty RPC，以及几段并发锁代码。仓库说明是 technology study example。\n\n其余公开仓库是 fork，包括云原生笔记、CS-Notes、Nacos 和 Netty，不列入作品。\n\n## 联系方式\n\n- GitHub：[@wengxiaolu](https://github.com/wengxiaolu)\n- 网站：[wengxiaolu.github.io](https://wengxiaolu.github.io/)\n- 订阅：[Atom](/atom.xml)"
   },
   "learning": {
     "title": "tech_learning",

@@ -1,17 +1,10 @@
 const loader = document.getElementById("loader");
 const start = document.getElementById("start");
-const cursor = document.getElementById("cursor");
 
 if (start && loader) {
   start.addEventListener("click", () => {
     loader.classList.add("is-done");
     loader.setAttribute("aria-hidden", "true");
-  });
-}
-
-if (cursor && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-  window.addEventListener("pointermove", (event) => {
-    cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
   });
 }
 

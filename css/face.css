@@ -29,8 +29,13 @@ body.face {
 
 body.face a { color: inherit; text-decoration: none; }
 
-@media (hover: hover) and (pointer: fine) {
-  body.face, body.face a, body.face button { cursor: none; }
+body.face a,
+body.face button { cursor: pointer; }
+
+body.face a:focus-visible,
+body.face button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
 }
 
 .loader {
@@ -40,7 +45,7 @@ body.face a { color: inherit; text-decoration: none; }
   display: grid;
   place-items: center;
   background: var(--bg);
-  transition: opacity 0.6s var(--ease);
+  transition: opacity 0.4s ease;
 }
 
 .loader.is-done {
@@ -72,32 +77,13 @@ body.face a { color: inherit; text-decoration: none; }
   letter-spacing: 0.16em;
   line-height: 1.3;
   text-transform: uppercase;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .loader-start:hover,
 .loader-start:focus-visible {
   background: var(--ink);
   color: var(--bg);
-  outline: none;
-}
-
-.cursor {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 70;
-  width: 12px;
-  height: 12px;
-  margin: -6px 0 0 -6px;
-  border-radius: 50%;
-  background: var(--ink);
-  pointer-events: none;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .cursor { display: block; }
 }
 
 .top {
@@ -134,6 +120,7 @@ body.face a { color: inherit; text-decoration: none; }
   letter-spacing: 0.08em;
   line-height: 1;
   text-transform: uppercase;
+  transition: color 0.18s ease;
 }
 
 .menu-clip {
@@ -142,13 +129,7 @@ body.face a { color: inherit; text-decoration: none; }
   overflow: hidden;
 }
 
-.menu-line {
-  display: block;
-  transition: transform 0.4s var(--ease);
-}
-
-.menu a:hover .menu-line,
-.menu a:focus-visible .menu-line { transform: translateY(-100%); }
+.menu-line { display: block; }
 
 .menu a:hover,
 .menu a:focus-visible { color: var(--ink); }
@@ -168,7 +149,7 @@ body.face a { color: inherit; text-decoration: none; }
   inset: -8%;
   background:
     radial-gradient(90% 70% at 50% 40%, #fffdf8 0%, #f3ece2 52%, #f7f4ee 80%);
-  animation: drift 22s var(--ease) infinite alternate;
+  animation: drift 32s ease-in-out infinite alternate;
 }
 
 .hero-copy {
@@ -283,7 +264,7 @@ body.face a { color: inherit; text-decoration: none; }
   color: var(--dark);
   clip-path: inset(50% 0 50% 0);
   pointer-events: none;
-  transition: clip-path 0.6s var(--ease);
+  transition: clip-path 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .line-mask .line-inner {
@@ -429,5 +410,5 @@ body.face a { color: inherit; text-decoration: none; }
 
 @keyframes drift {
   from { transform: scale(1); }
-  to { transform: scale(1.08) translate3d(0, -1.5%, 0); }
+  to { transform: scale(1.035) translate3d(0, -0.8%, 0); }
 }

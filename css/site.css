@@ -4,8 +4,8 @@
   --heading: #161513;
   --muted: rgba(22, 21, 19, 0.55);
   --line: rgba(22, 21, 19, 0.12);
-  --link: #b8432a;
-  --link-hover: #8d2f1c;
+  --link: #6d4034;
+  --link-hover: #161513;
   --display: "League Spartan", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", sans-serif;
   --sans: "Nunito Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Micro Hei", "Droid Sans Fallback", sans-serif;
   --measure: 760px;
@@ -31,8 +31,8 @@ body {
 }
 
 ::selection {
-  background: #eb5939;
-  color: #fffdf8;
+  background: #e6d9c8;
+  color: #161513;
 }
 
 a { color: var(--link); }
@@ -291,7 +291,7 @@ img { max-width: 100%; height: auto; }
 .yue a {
   color: var(--link);
   text-decoration: none;
-  border-bottom: 1px solid rgba(184, 67, 42, 0.45);
+  border-bottom: 1px solid rgba(109, 64, 52, 0.45);
 }
 
 .yue a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }

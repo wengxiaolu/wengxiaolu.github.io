@@ -370,26 +370,27 @@ function facePage(site, notes) {
     </a>
     <nav class="menu" aria-label="Sections">
       ${faceMenu("#about", "About")}
+      ${faceMenu("/notes/", "Notes")}
       ${faceMenu("#work", "Work")}
       ${faceMenu("#contact", "Contact")}
     </nav>
   </header>
   <main>
-    <section class="hero" id="about">
+    <section class="hero">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-copy">
         <p class="eyebrow">${escapeHtml(home.name)}</p>
         <h1>${hero}</h1>
       </div>
     </section>
-    <section class="chapter">
+    <section class="chapter" id="about">
       <div class="sheet">
         <p class="eyebrow">${escapeHtml(home.introLabel)}</p>
         <p class="statement">${linesOf(home.intro)}</p>
       </div>
     </section>
-    <section class="rows" aria-label="${escapeHtml(home.notesLabel)}">
-      <div class="sheet sheet-label"><p class="eyebrow">${escapeHtml(home.notesLabel)}</p></div>
+    <section class="rows" id="notes" aria-label="${escapeHtml(home.notesLabel)}">
+      <div class="sheet sheet-label"><p class="eyebrow"><a href="/notes/">${escapeHtml(home.notesLabel)}</a></p></div>
       ${articles}
     </section>
     <section class="chapter" id="work">

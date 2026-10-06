@@ -90,6 +90,11 @@ body.face button:focus-visible {
   color: var(--bg);
 }
 
+#about,
+#notes,
+#work,
+#contact { scroll-margin-top: 88px; }
+
 .top {
   position: fixed;
   z-index: 40;
@@ -327,7 +332,8 @@ body.face button:focus-visible {
 
 @media (max-width: 720px) {
   .top { align-items: center; }
-  .menu a { font-size: 13px; letter-spacing: 0.06em; }
+  .menu { gap: 0.3rem 0.75rem; }
+  .menu a { font-size: 13px; letter-spacing: 0.04em; }
   .loader-mark { width: 11rem; height: 11rem; }
   .hero {
     min-height: 0;

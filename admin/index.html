@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/css/site.css">
   <link rel="stylesheet" href="/admin/admin.css">
 </head>
-<body>
+<body class="page-admin">
   <header id="header">
     <div class="container">
       <a id="brand" href="/index.html">
@@ -41,7 +41,7 @@
         <label>分支
           <input id="branch" value="master" autocomplete="off">
         </label>
-        <p class="hint">发布分支是 master。这次改版还没合并时，先不要保存到 master，否则新页面会和旧的 Hexo 文件叠在一起。</p>
+        <p class="hint">保存会提交到这个分支。线上页面从 master 发布。</p>
         <div class="row">
           <button type="submit">保存令牌</button>
           <button type="button" id="check-token">检查令牌</button>
@@ -107,6 +107,7 @@
           <textarea id="body" rows="14" placeholder="一行一段。&#10;&#10;## 小标题&#10;&#10;- 列表&#10;- [链接文字](https://example.com)&#10;&#10;用 **加粗** 和 `代码`。"></textarea>
         </label>
         <p class="hint">一行一段。<code>##</code> 是小标题，<code>- </code> 是列表，链接写成 <code>[文字](网址)</code>。</p>
+        <p class="preview-label">预览</p>
         <div class="preview yue" id="preview"></div>
         <div class="row">
           <button type="submit" id="save">保存到 GitHub</button>

@@ -5,6 +5,8 @@ const NAV = [
   { href: "/notes/", label: "Notes", key: "notes" },
   { href: "/learning/", label: "Learning", key: "learning" },
   { href: "/about/", label: "About", key: "about" },
+  { href: "/index.html#work", label: "Work", key: "work" },
+  { href: "/index.html#contact", label: "Contact", key: "contact" },
 ];
 
 const MARK = `<svg class="mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
@@ -160,9 +162,6 @@ function pageShell({ site, title, description, current, band, hero, main, bodyCl
   </div>`
     : "";
   const bodyAttr = bodyClass ? ` class="${escapeHtml(bodyClass)}"` : "";
-  const quiet = bodyClass === "page-article" && current === "notes"
-    ? `\n      <a class="quiet-link" href="/notes/">笔记</a>`
-    : "";
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -187,7 +186,7 @@ function pageShell({ site, title, description, current, band, hero, main, bodyCl
       </a>
       <nav id="nav" aria-label="主导航">
         ${nav}
-      </nav>${quiet}
+      </nav>
     </div>
   </header>${heroHtml}${bandHtml}
   ${main}
@@ -368,11 +367,8 @@ function facePage(site, notes) {
         <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.4"/>
       </svg>
     </a>
-    <nav class="menu" aria-label="Sections">
-      ${faceMenu("#about", "About")}
-      ${faceMenu("/notes/", "Notes")}
-      ${faceMenu("#work", "Work")}
-      ${faceMenu("#contact", "Contact")}
+    <nav class="menu" aria-label="主导航">
+      ${NAV.map((item) => faceMenu(item.href, item.label)).join("\n      ")}
     </nav>
   </header>
   <main>

@@ -272,8 +272,9 @@ ${entries}
 `;
 }
 
-function faceMenu(href, label) {
-  return `<a href="${href}">
+function faceMenu(href, label, current) {
+  const currentAttr = current ? ` aria-current="page"` : "";
+  return `<a href="${href}"${currentAttr}>
         <span class="menu-clip">
           <span class="menu-line">${escapeHtml(label)}</span>
           <span class="menu-line">${escapeHtml(label)}</span>
@@ -373,7 +374,7 @@ function facePage(site, notes) {
       </svg>
     </a>
     <nav class="menu" aria-label="主导航">
-      ${NAV.map((item) => faceMenu(item.href, item.label)).join("\n      ")}
+      ${NAV.map((item) => faceMenu(item.href, item.label, item.key === "home")).join("\n      ")}
     </nav>
   </header>
   <main>

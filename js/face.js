@@ -9,6 +9,19 @@ if (start && loader) {
   });
 }
 
+function markMenu() {
+  const hash = location.hash;
+  document.querySelectorAll(".menu a").forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    const current = hash ? href.endsWith(hash) : href === "/index.html";
+    if (current) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  });
+}
+
+markMenu();
+window.addEventListener("hashchange", markMenu);
+
 const coarse = window.matchMedia("(pointer: coarse)").matches;
 if (coarse) {
   document.querySelectorAll(".line").forEach((line) => {

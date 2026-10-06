@@ -189,10 +189,10 @@ img { max-width: 100%; height: auto; }
   color: var(--muted);
   font-family: var(--sans);
   font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: 0;
   line-height: 1.4;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .entry-list h2 {
@@ -207,8 +207,14 @@ img { max-width: 100%; height: auto; }
 
 .entry-list a { text-decoration: none; color: inherit; }
 
+.entry-list h2 a:visited { color: #161513; }
+.entry-list .description a:visited { color: #3a342c; }
+
 .entry-list h2 a:hover,
-.entry-list .description a:hover { color: var(--link-hover); }
+.entry-list .description a:hover { color: var(--link); }
+
+.entry-list h2 a:hover:visited,
+.entry-list .description a:hover:visited { color: #6d4034; }
 
 .description {
   max-width: 36em;
@@ -294,7 +300,14 @@ img { max-width: 100%; height: auto; }
   border-bottom: 1px solid rgba(109, 64, 52, 0.45);
 }
 
+.yue a:visited {
+  color: #6d4034;
+  border-bottom-color: rgba(109, 64, 52, 0.45);
+}
+
 .yue a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
+
+.yue a:hover:visited { color: #161513; border-bottom-color: #161513; }
 
 .yue code, .yue pre {
   font-family: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
@@ -336,7 +349,11 @@ img { max-width: 100%; height: auto; }
   text-decoration: none;
 }
 
+#footer a:visited { color: rgba(22, 21, 19, 0.55); }
+
 #footer a:hover { color: var(--heading); }
+
+#footer a:hover:visited { color: #161513; }
 
 @media (max-width: 640px) {
   #header { padding: 12px 0; }
@@ -349,7 +366,9 @@ img { max-width: 100%; height: auto; }
     letter-spacing: 0;
     text-transform: none;
   }
-  #nav a { font-size: 13px; }
+  #nav a { font-size: 13px; color: var(--muted); }
+  #nav a:hover,
+  #nav a[aria-current="page"] { color: var(--heading); }
   #brand strong { font-size: 15px; font-weight: 600; }
   .category-list a { font-size: 12px; letter-spacing: 0.04em; padding: 0 12px; }
   .panel {
@@ -591,3 +610,7 @@ img { max-width: 100%; height: auto; }
     border-top: 1px solid var(--line);
   }
 }
+
+#nav a:visited { color: rgba(22, 21, 19, 0.55); }
+#nav a:hover:visited,
+#nav a[aria-current="page"]:visited { color: #161513; }

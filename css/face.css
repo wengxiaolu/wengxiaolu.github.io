@@ -124,15 +124,16 @@ html.skip-loader .loader { display: none; }
 }
 
 .menu a {
-  color: var(--ink-dim);
+  color: rgba(22, 21, 19, 0.55);
   font-family: var(--sans);
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  text-transform: uppercase;
-  transition: color 0.18s ease;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  text-transform: none;
 }
+
+.menu a:visited { color: rgba(22, 21, 19, 0.55); }
 
 .menu-clip {
   display: block;
@@ -140,10 +141,16 @@ html.skip-loader .loader { display: none; }
   overflow: hidden;
 }
 
-.menu-line { display: block; }
+.menu-line { display: block; color: rgba(22, 21, 19, 0.55); }
 
 .menu a:hover,
-.menu a:focus-visible { color: var(--ink); }
+.menu a:focus-visible,
+.menu a:hover:visited,
+.menu a[aria-current="page"] { color: var(--ink); }
+
+.menu a:hover .menu-line,
+.menu a:focus-visible .menu-line,
+.menu a[aria-current="page"] .menu-line { color: var(--ink); }
 
 .hero {
   position: relative;
@@ -322,7 +329,8 @@ html.skip-loader .loader { display: none; }
 
 .rows-history .aside { width: auto; flex: 1 1 auto; }
 
-.line-link { display: block; color: inherit; }
+.line-link,
+.line-link:visited { display: block; color: inherit; }
 
 .hero-end { min-height: 70vh; min-height: 70svh; }
 
@@ -335,7 +343,7 @@ html.skip-loader .loader { display: none; }
 @media (max-width: 720px) {
   .top { align-items: center; }
   .menu { gap: 0.35rem 0.55rem; }
-  .menu a { font-size: 13px; letter-spacing: 0; text-transform: none; }
+  .menu a { font-size: 13px; }
   .loader-mark { width: 11rem; height: 11rem; }
   .hero {
     min-height: 0;

@@ -48,7 +48,7 @@ assert.match(files["index.html"], /id="notes"/);
 assert.match(files["index.html"], /id="work"/);
 assert.match(files["index.html"], /id="contact"/);
 const sharedMenu = /href="\/index\.html">Home<\/[\s\S]*href="\/notes\/"(?: aria-current="page")?>Notes<\/[\s\S]*href="\/learning\/"(?: aria-current="page")?>Learning<\/[\s\S]*href="\/about\/"(?: aria-current="page")?>About<\/[\s\S]*href="\/index\.html#work">Work<\/[\s\S]*href="\/index\.html#contact">Contact<\//;
-assert.match(files["index.html"], /href="\/index\.html">[\s\S]*menu-line">Home<\/span>[\s\S]*href="\/notes\/">[\s\S]*menu-line">Notes<\/span>[\s\S]*href="\/learning\/">[\s\S]*menu-line">Learning<\/span>[\s\S]*href="\/about\/">[\s\S]*menu-line">About<\/span>[\s\S]*href="\/index\.html#work">[\s\S]*menu-line">Work<\/span>[\s\S]*href="\/index\.html#contact">[\s\S]*menu-line">Contact<\/span>/);
+assert.match(files["index.html"], /href="\/index\.html" aria-current="page">[\s\S]*menu-line">Home<\/span>[\s\S]*href="\/notes\/">[\s\S]*menu-line">Notes<\/span>[\s\S]*href="\/learning\/">[\s\S]*menu-line">Learning<\/span>[\s\S]*href="\/about\/">[\s\S]*menu-line">About<\/span>[\s\S]*href="\/index\.html#work">[\s\S]*menu-line">Work<\/span>[\s\S]*href="\/index\.html#contact">[\s\S]*menu-line">Contact<\/span>/);
 for (const file of ["notes/index.html", "notes/hello-note/index.html", "about/index.html", "learning/index.html", "404.html"]) {
   assert.match(files[file], sharedMenu, file);
   assert.doesNotMatch(files[file], /href="#(?:about|work|contact)"|quiet-link/, file);

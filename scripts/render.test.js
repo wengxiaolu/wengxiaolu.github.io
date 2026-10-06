@@ -40,6 +40,8 @@ assert.doesNotMatch(files["index.html"], /Minh|good shit|Fantasy/i);
 assert.match(files["notes/index.html"], /标题/);
 assert.match(files["notes/index.html"], /href="\/index\.html">Home</);
 assert.match(files["index.html"], /class="brand" href="\/index\.html"/);
+assert.match(files["index.html"], /sessionStorage\.getItem\("entered"\)/);
+assert.match(files["index.html"], /location\.hash/);
 assert.match(files["index.html"], /menu-line">Home<\/span>[\s\S]*menu-line">Notes<\/span>[\s\S]*menu-line">Learning<\/span>[\s\S]*menu-line">About<\/span>[\s\S]*menu-line">Work<\/span>[\s\S]*menu-line">Contact<\/span>/);
 assert.match(files["index.html"], /id="about"/);
 assert.match(files["index.html"], /id="notes"/);

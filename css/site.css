@@ -364,6 +364,15 @@ img { max-width: 100%; height: auto; }
   .entry-item { padding: 18px 0 20px; }
 }
 
+@media (max-width: 480px) {
+  #nav {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: end;
+    gap: 4px 12px;
+  }
+}
+
 @media (max-width: 640px) {
   .page-article #header {
     padding: 0;

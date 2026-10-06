@@ -3,6 +3,7 @@ const start = document.getElementById("start");
 
 if (start && loader) {
   start.addEventListener("click", () => {
+    try { sessionStorage.setItem("entered", "1"); } catch (error) {}
     loader.classList.add("is-done");
     loader.setAttribute("aria-hidden", "true");
   });

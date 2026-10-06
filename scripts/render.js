@@ -355,6 +355,11 @@ function facePage(site, notes) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,500;0,6..12,700;1,6..12,500&display=swap">
   <link rel="stylesheet" href="/css/face.css">
+  <script>
+    try {
+      if (location.hash || sessionStorage.getItem("entered")) document.documentElement.classList.add("skip-loader");
+    } catch (error) {}
+  </script>
 </head>
 <body class="face">
   <div class="loader" id="loader">

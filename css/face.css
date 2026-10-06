@@ -42,6 +42,8 @@ body.face button:focus-visible {
   outline-offset: 3px;
 }
 
+html.skip-loader .loader { display: none; }
+
 .loader {
   position: fixed;
   inset: 0;
@@ -332,15 +334,15 @@ body.face button:focus-visible {
 
 @media (max-width: 720px) {
   .top { align-items: center; }
-  .menu { max-width: calc(100% - 48px); gap: 0.35rem 0.7rem; }
-  .menu a { font-size: 13px; letter-spacing: 0.02em; text-transform: none; }
+  .menu { gap: 0.35rem 0.55rem; }
+  .menu a { font-size: 13px; letter-spacing: 0; text-transform: none; }
   .loader-mark { width: 11rem; height: 11rem; }
   .hero {
     min-height: 0;
     padding: 112px 24px 28px;
   }
   .hero-end {
-    min-height: 0;
+    min-height: calc(100svh - 88px);
     padding: 112px 24px 28px;
   }
   .chapter { padding: 40px 0 8px; }

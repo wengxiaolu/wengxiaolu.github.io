@@ -344,10 +344,6 @@ function facePage(site, notes) {
   const articles = articleNotes.map((note) => faceBlock(facePair(note.title, note.summary), `/notes/${note.slug}/`)).join("\n");
   const history = home.history.map((item) => faceHistoryLine(item)).join("\n");
   const socials = home.socials.map((item) => faceBlock(facePair(item.label, item.aside), item.href)).join("\n");
-  const dock = home.socials.map((item) => {
-    const href = safeUrl(item.href || "") || "#";
-    return `<li><a href="${escapeHtml(href)}">${escapeHtml(item.label || "")}</a></li>`;
-  }).join("\n");
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -418,12 +414,6 @@ function facePage(site, notes) {
       </div>
     </section>
   </main>
-  <footer class="dock">
-    <ul class="dock-links">
-      ${dock}
-    </ul>
-    <p class="dock-side">${escapeHtml(home.name)}</p>
-  </footer>
   <script src="/js/face.js"></script>
 </body>
 </html>

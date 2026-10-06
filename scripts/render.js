@@ -366,7 +366,6 @@ function facePage(site, notes) {
     <div class="loader-mark" aria-hidden="true"></div>
     <button class="loader-start" id="start" type="button">${escapeHtml(home.enter)}</button>
   </div>
-  <div class="cursor" id="cursor" aria-hidden="true"></div>
   <header class="top">
     <a class="brand" href="/index.html" aria-label="${escapeHtml(home.name)}">
       <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">

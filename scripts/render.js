@@ -1,7 +1,7 @@
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const NAV = [
-  { href: "/", label: "Home", key: "home" },
+  { href: "/index.html", label: "Home", key: "home" },
   { href: "/notes/", label: "Notes", key: "notes" },
   { href: "/learning/", label: "Learning", key: "learning" },
   { href: "/about/", label: "About", key: "about" },
@@ -181,7 +181,7 @@ function pageShell({ site, title, description, current, band, hero, main, bodyCl
   <div class="stage">
   <header id="header">
     <div class="container">
-      <a id="brand" href="/">
+      <a id="brand" href="/index.html">
         ${MARK}
         <strong>${escapeHtml(site.name)}</strong>
       </a>
@@ -368,7 +368,7 @@ function facePage(site, notes) {
   </div>
   <div class="cursor" id="cursor" aria-hidden="true"></div>
   <header class="top">
-    <a class="brand" href="/" aria-label="${escapeHtml(home.name)}">
+    <a class="brand" href="/index.html" aria-label="${escapeHtml(home.name)}">
       <svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
         <circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.4"/>
       </svg>
@@ -472,7 +472,7 @@ export function renderSite(site) {
       </div>
     </header>
     <div class="container yue entry-content">
-      <p>这个地址没有内容。回到 <a href="/">首页</a>，或看 <a href="/notes/">笔记</a>。</p>
+      <p>这个地址没有内容。回到 <a href="/index.html">首页</a>，或看 <a href="/notes/">笔记</a>。</p>
     </div>
   </article>`,
     }),
